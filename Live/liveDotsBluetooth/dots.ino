@@ -36,7 +36,7 @@ void dots(int sections, int len, int sped, int brightness, int fade) {
     // Light up leds
     for (int l = 0; l < SECTION_LENGTH; l++) {
       int brightness = BRIGHTNESS - abs(SECTION_LENGTH/2 - l) * (BRIGHTNESS/SECTION_LENGTH) * FADE;
-      leds[pos + l] = CHSV((((255 / NUM_SECTIONS) * sec) + pos) % 255, 255, brightness);
+      setLed(pos + l, CHSV((((255 / NUM_SECTIONS) * sec) + pos) % 255, 255, brightness));
     }
   }
   FastLED.show();

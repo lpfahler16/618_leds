@@ -12,10 +12,10 @@ void setup() {
 }
 
 void scatter() {
-  int NUM_DOTS = 5
-  int SECTIONS = 1
-  int SPEED = 5 
-  int BRIGHTNESS = 255
+  int NUM_DOTS = 5;
+  int SECTIONS = 1;
+  int SPEED = 5;
+  int BRIGHTNESS = 255;
 
   int TRACK_LENGTH = (NUM_LEDS - (SECTIONS*NUM_DOTS))*2;
   int SECTION_OFFSET = TRACK_LENGTH / SECTIONS;
@@ -34,14 +34,11 @@ void scatter() {
 
     // Scatter lights
     if (pos = TRACK_LENGTH/4) {
-      pos = //i have no idea what to do here to actually make the individual dots move at separate rates of speed 
+      //pos = //i have no idea what to do here to actually make the individual dots move at separate rates of speed 
     }
 
     // Light up leds
-    for (int l = 0; l < SECTIONS; l++) {
-      int brightness = BRIGHTNESS - abs(NUM_DOTS/2 - l) * (BRIGHTNESS/NUM_DOTS) * FADE;
-      leds[pos + l] = CHSV((((255 / SECTIONS) * sec) + pos) % 255, 255, brightness);
-    }
+    setLeds(pos, pos + SECTIONS, CRGB(255, 255, brightness));
   }
   FastLED.show();
 }

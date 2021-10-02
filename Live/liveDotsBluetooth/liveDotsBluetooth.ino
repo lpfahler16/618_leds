@@ -23,7 +23,7 @@ void loop() {
     clock = 0;
   }
   if (in == 'a') {
-    section_fade(1);
+    sectionFade(1);
   }
   else if (in =='b') {
      std_dots();
