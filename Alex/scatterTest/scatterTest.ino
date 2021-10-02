@@ -11,21 +11,41 @@ void setup() {
     Serial.begin(9600);
 }
 
-void dots() {
-  for (int i = 90; i < NUM_LEDS; i++) {
-    FastLED.clear();
-    leds[90+i] = CRGB(255, 0, 0);
-    leds[91+i] = CRGB(255, 0, 0);
-    leds[92+i] = CRGB(255, 0, 0);
-    delay(100);
+void scatter() {
+  int NUM_DOTS = 5
+  int SECTIONS = 1
+  int SPEED = 5 
+  int BRIGHTNESS = 255
+
+  int TRACK_LENGTH = (NUM_LEDS - (SECTIONS*NUM_DOTS))*2;
+  int SECTION_OFFSET = TRACK_LENGTH / SECTIONS;
+  
+  FastLED.clear();
+
+  // Iterate to make sections
+  for (int sec = 0; sec < NUM_DOTS; sec++) {
+    int offset = sec * SECTION_OFFSET;
+    int pos = (int) ((clock + offset) * (SPEED / 5.0)) % TRACK_LENGTH;
+
+    // Switch directions
+    if (pos >= TRACK_LENGTH/2) {
+      pos = TRACK_LENGTH - 1 - pos;
+    }
+
+    // Scatter lights
+    if (pos = TRACK_LENGTH/4) {
+      pos = //i have no idea what to do here to actually make the individual dots move at separate rates of speed 
+    }
+
+    // Light up leds
+    for (int l = 0; l < SECTIONS; l++) {
+      int brightness = BRIGHTNESS - abs(NUM_DOTS/2 - l) * (BRIGHTNESS/NUM_DOTS) * FADE;
+      leds[pos + l] = CHSV((((255 / SECTIONS) * sec) + pos) % 255, 255, brightness);
+    }
   }
+  FastLED.show();
 }
 
 void loop() {
-  if (leds[100] = 1) {
-    FastLED.clear();
-    FastLED.show();
-    leds[200] = CRGB(0, 0, 255);
-  }
-  dots();
+  scatter();
 }
