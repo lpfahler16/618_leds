@@ -26,7 +26,7 @@ void dots(int sections, int len, int sped, int brightness, int fade) {
   // Iterate to make sections
   for (int sec = 0; sec < NUM_SECTIONS; sec++) {
     int offset = sec * SECTION_OFFSET;
-    int pos = (int) ((clock + offset) * (SPEED / 5.0)) % TRACK_LENGTH;
+    int pos = (int) ((long) ((clock + offset) * (SPEED / 5.0)) % TRACK_LENGTH);
 
     // Switch directions
     if (pos >= TRACK_LENGTH/2) {
