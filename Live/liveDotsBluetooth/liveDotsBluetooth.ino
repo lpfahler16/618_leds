@@ -3,6 +3,8 @@
 #define LED_PIN_2 8
 #define NUM_LEDS 300
 char in = 'a';
+int brightness = 150;
+boolean isGoingDown = true;
 
 CRGB leds[NUM_LEDS];
 long clock;
@@ -26,7 +28,7 @@ void loop() {
     sectionFade(1);
   }
   else if (in =='b') {
-     std_dots();
+     breathingLeds();
   }
   else if (in == 'r') {
      allColor(CRGB(255, 0, 0));

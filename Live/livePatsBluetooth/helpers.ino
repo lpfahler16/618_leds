@@ -19,6 +19,7 @@ void setLeds(int lights[], int numLeds, CRGB color) {
 }
 
 // Returns a boolean to say whether it should run based on the clock
+// t is in ms
 boolean goTime(int t) {
   return (clock % (t / 5)) == 0;
 }
