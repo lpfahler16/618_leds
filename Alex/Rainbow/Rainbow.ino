@@ -1,9 +1,10 @@
 #include <FastLED.h>
 
 #define LED_PIN     7
+#define LED_PIN_2   8
 #define NUM_LEDS    300
-#define BRIGHTNESS  150
-#define LED_TYPE    WS2811
+#define BRIGHTNESS  255
+#define LED_TYPE    WS2812B
 #define COLOR_ORDER GRB
 CRGB leds[NUM_LEDS];
 
@@ -38,6 +39,7 @@ extern const TProgmemPalette16 myRedWhiteBluePalette_p PROGMEM;
 void setup() {
     delay( 3000 ); // power-up safety delay
     FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
+    FastLED.addLeds<LED_TYPE, LED_PIN_2, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
     FastLED.setBrightness(  BRIGHTNESS );
     
     currentPalette = RainbowColors_p;
@@ -50,7 +52,7 @@ void loop()
     ChangePalettePeriodically();
     
     static uint8_t startIndex = 0;
-    startIndex = startIndex + 1; /* motion speed */
+    startIndex = startIndex + 4; /* motion speed */
     
     FillLEDsFromPaletteColors( startIndex);
     
