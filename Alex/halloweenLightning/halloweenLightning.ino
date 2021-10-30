@@ -26,16 +26,16 @@ void rolling(){
     //iterate through every LED
     for(int i=0;i<NUM_LEDS;i++){
       if(random(0,100)>90){
-        leds[i] = CHSV( random(0,40), 255, 155); 
+        leds[i] = CHSV(random(0,40), 0, 155); 
 
       }
       else{
-        //dont need reset as we're blacking out other LEDs here
+        //dont need reset as we're blacking out other LEDs her 
         leds[i] = CHSV(0,0,0);
       }
     }
     FastLED.show();
-    delay(random(50,100));
+    delay(random(5,100));
     reset();
     
   }
@@ -47,7 +47,7 @@ void crack(){
       leds[i] = CHSV(21, 255, 185); 
    }
    FastLED.show();
-   delay(random(40,100));
+   delay(random(10,100));
    reset();
 }
 
@@ -64,18 +64,18 @@ void thunderburst(){
   for(int r = 0;r<random(3,6);r++){
     
     for(int i=0;i< rl1; i++){
-      leds[i+rs1] = CHSV( random(0,40), 255, 195);
+      leds[i+rs1] = CHSV(random(0,40), 0, 195);
     }
     
     if(rs2+rl2 < NUM_LEDS){
       for(int i=0;i< rl2; i++){
-        leds[i+rs2] = CHSV( random(0,40), 255, 95);
+        leds[i+rs2] = CHSV(random(0,40) 0, 95);
       }
     }
     
     FastLED.show();
     //stay illuminated for a set time
-    delay(random(50,100));
+    delay(random(10,50));
     
     reset();
     delay(random(10,50));
@@ -113,5 +113,5 @@ void constant_lightning(){
 
 void loop() { 
     constant_lightning();
-    delay(80);
+    delay(200);
 }
