@@ -1,42 +1,41 @@
-//618 Lamp Header File
+// 618 Lamp Header File
 #ifndef Lamp_H
 #define Lamp_H
 
 #include <FastLED.h>
 
-const unsigned int NUM_LEDS     = 53; 
+const static unsigned int NUM_LEDS = 53;
 
+class Lamp
+{
 
-class Lamp {
+private:
+    struct CRGB strip1[NUM_LEDS];
+    struct CRGB strip2[NUM_LEDS];
+    struct CRGB strip3[NUM_LEDS];
 
-    private:
-        CRGB strip1[NUM_LEDS]; 
-        CRGB strip2[NUM_LEDS];
-        CRGB strip3[NUM_LEDS];
+public:
+    const static unsigned int LENGTH = NUM_LEDS;
 
-    public:
-        Lamp(); //Will take in inputs at somepoint
-        ~Lamp();
-        void SetRing(int ring, CRGB color);
-        void SetRing(int ring, CHSV color);
-        void SetRings(int[] rings, CRGB color);
-        void SetRings(int[] rings, CHSV color);
-        void SetRings(int from, int to, CRGB color);
-        void SetRings(int from, int to, CHSV color);
-        void SetLamp(CRGB color);
-        void SetLamp(CHSV color);
-        void SetLED(int strip, int led, CRGB color);
-        void SetLED(int strip, int led, CHSV color);
-        void SetLEDs(int strip, int[] rings, CRGB color);
-        void SetLEDs(int strip, int[] rings, CHSV color);
-        void SetLEDs(int strip, int from, int to, CRGB color);
-        void SetLEDs(int strip, int from, int to, CHSV color);
-        void SetStrip(int strip, CRGB color);
-        void SetStrip(int strip, CHSV color);
+    Lamp(); // Will take in inputs at somepoint
+    ~Lamp();
 
-}
+    void SetRing(int ring, struct CRGB color);
+    // void SetRing(int ring, CHSV color);
+    void SetRings(int from, int to, struct CRGB color);
+    // void SetRings(int from, int to, CHSV color);
+    void SetLamp(struct CRGB color);
+    // void SetLamp(CHSV color);
+    void SetLED(int strip, int led, struct CRGB color);
+    // void SetLED(int strip, int led, CHSV color);
+    void SetLEDs(int strip, int from, int to, struct CRGB color);
+    // void SetLEDs(int strip, int from, int to, CHSV color);
+    void SetStrip(int strip, struct CRGB color);
+    // void SetStrip(int strip, CHSV color);
+    void Show();
+    void Clear();
 
-
-
+    struct CRGB GetLED(int strip, int led);
+};
 
 #endif
