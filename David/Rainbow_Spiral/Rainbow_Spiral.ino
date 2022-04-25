@@ -23,6 +23,7 @@ void loop() {
 }
 
 void UpwardSpiral() {
+  lamp.Clear();
   lamp.SetLED(0, i, color[x]);
   lamp.SetLED(1, i+1, color[x]);
   lamp.SetLED(2, i+2, color[x]);
@@ -36,6 +37,7 @@ void UpwardSpiral() {
 }
 
 void DownwardSpiral() {
+  lamp.Clear();
   lamp.SetLED(0, i, color[x]);
   lamp.SetLED(1, i-1, color[x]);
   lamp.SetLED(2, i-2, color[x]);
