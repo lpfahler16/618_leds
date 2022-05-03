@@ -14,7 +14,7 @@ void loop() {
     lamp.SetRings(pos, pos + 2, CHSV(j, 255, 255));
   }
   lamp.Show();
-  lamp.Delay(50);
+  lamp.Delay(100);
   i++;
-
+  i %= 255;
 }
